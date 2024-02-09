@@ -1,0 +1,6 @@
+Package Documentation
+=====================
+
+.. automodule:: stambo
+
+
