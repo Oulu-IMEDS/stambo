@@ -45,7 +45,7 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int_], npt.NDArray[np.float],
     result = {s_tag: np.zeros((n_bootstrap, 2)) for s_tag in statistics}
 
     for bootstrap_iter in pbar(range(n_bootstrap), total=n_bootstrap, desc="Bootstrapping", silent=silent):
-        ind = np.random.choice(sample_1.predictions.shape[0], sample_1.predictions.shape[0], replace=True)
+        ind = np.random.choice(len(sample_1), len(sample_1), replace=True)
 
         for s_tag in statistics:
             v1 = statistics[s_tag](sample_1[ind])
@@ -74,10 +74,11 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int_], npt.NDArray[np.float],
 
 
 def compare_models(y_test: np.ndarray, preds_1: np.ndarray, preds_2: np.ndarray, 
-                   metrics: Union[Dict[str, Metric], Tuple[str]], 
-                   two_tailed: bool = True,
-                   n_bootstrap=10000, seed:int=None, 
-                   silent:bool=False) -> Dict[str, Tuple[float]]:
+                   metrics: Tuple[Union[str, Metric]],
+                   alpha: Optional[float]=0.05,
+                   two_tailed: bool=True,
+                   n_bootstrap: int=10000, seed: int=None, 
+                   silent: bool=False) -> Dict[str, Tuple[float]]:
     """Compares predictions from two models. By default, the function assumes that we are solving a
     classification problem. The expected dimension of `preds_1` and `preds_1` is `$N_{samples} \times N_{classes}$`. 
     When `$N_{classes}$` is 1, the function expects the problem to be either binary classification or regression. 
@@ -87,7 +88,7 @@ def compare_models(y_test: np.ndarray, preds_1: np.ndarray, preds_2: np.ndarray,
         y_test (np.ndarray): Ground truth
         preds_1 (np.ndarray): Prediction from model 1
         preds_2 (np.ndarray): Prediction from model 2
-        metrics (Dict[str, Metric], optional): A dictionary of metrics to call. If the user wants to use the standard metrics
+        metrics (Tuple[Union[str, Metric]]): A set of metrics to call. Here, the user either specifies the metrcis available from the stambo library, or adds an instance of the custom-defined metrics.
         alpha (float, optional): A signficance level for confidence intervals (from 0 to 1).
         two_tailed (bool, optional): Whether to conduct a two-tailed test. Usually the tests we care about are single-tailed, i.e. the `H_0: model 2 = model 2` vs `H_1: model 2 > model 1`
         n_bootstrap (int, optional): The number of bootstrap iterations. Defaults to 10000.
@@ -110,10 +111,15 @@ def compare_models(y_test: np.ndarray, preds_1: np.ndarray, preds_2: np.ndarray,
     sample_1 = PredSampleWrapper(preds_1, y_test, multiclass=len(preds_1.shape) != 1)
     sample_2 = PredSampleWrapper(preds_2, y_test, multiclass=len(preds_1.shape) != 1)
 
-    if isinstance(metrics, tuple):
-        metrics = {metric_tag: getattr(metricslib, metric_tag)() for metric_tag in metrics}
+    metrics_dict = {}
+    for metric in metrics:
+        if isinstance(metric, Metric):
+            metrics_dict[str(metric)] = metric # note that the object must be instantiated
+        elif isinstance(metric, str):
+            assert hasattr(metricslib, metric), f"Metric {metric} is not defined"
+            metrics_dict[metric] = getattr(metricslib, metric)()
 
-    return two_sample_test(sample_1, sample_2, statistics=metrics, 
+    return two_sample_test(sample_1, sample_2, statistics=metrics_dict, alpha=alpha,
                            two_tailed=two_tailed, n_bootstrap=n_bootstrap, 
                            seed=seed, silent=silent)
     

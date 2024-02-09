@@ -19,7 +19,7 @@ def to_latex(report: Dict[str, Tuple[float]], m1_name: Optional[str]="M1", m2_na
     # Format: three rows: one per metric, another per model
     tbl = "% \\usepackage{booktabs} <-- do not for get to have this imported. \n"
     tbl += "\\begin{tabular}{" + "l"*(1 + len(report)) + "} \\\\ \n"
-    tbl += " \\toprule \n"
+    tbl += "\\toprule \n"
     tbl += "\\textbf{Model}"
     # Building up the header
     for metric in report:

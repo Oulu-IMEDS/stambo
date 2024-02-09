@@ -52,3 +52,6 @@ class PredSampleWrapper:
             return self.predictions[idx], self.predictions_am[idx], self.gt[idx]
         return PredSampleWrapper(self.predictions[idx], self.gt[idx], multiclass=self.multiclass, 
                                  threshold=self.threshold, cached_am=self.predictions_am[idx])
+    
+    def __len__(self):
+        return self.predictions.shape[0]
