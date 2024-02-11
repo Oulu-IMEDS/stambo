@@ -3,7 +3,12 @@
 This package is aimed to be a one-stop-shop for statistical testing in machine learning when it comes to evaluating models on a test set. Currently, we do not support multi-label classification, and computing a significane of ranking multiple methods. Below you can find examples on how to do model comparison in classification, regresson, and semantic segmentation.
 
 ## In practice
-The use of the library is straightforward:
+Install from PyPI:
+```
+pip install stambo
+```
+
+The use of the library is then straightforward:
 ```
 import stambo
 ...
@@ -32,5 +37,5 @@ cd docs
 make html
 ```
 
-
-
+## Author
+Aleksei Tiulpin
