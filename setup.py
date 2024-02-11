@@ -5,7 +5,8 @@
 
 from setuptools import find_packages, setup
 
-requirements = ("numpy",)
+
+requirements = ["numpy>=1.20.0", "scikit-learn>=1.3.0", "tqdm>=4.0.0"]
 
 setup_requirements = ()
 
