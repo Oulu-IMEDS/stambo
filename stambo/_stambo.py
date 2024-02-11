@@ -31,7 +31,8 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int64], npt.NDArray[np.float6
         Dict[Tuple[float]]: A dictionary containing a tuple with the empirical value of the metric, and the p-value. 
                             The expected format in the output in every dict entry is: 
                             
-                            * p-value, empirical value (sample 1), 
+                            * p-value
+                            * empirical value (sample 1), 
                             * CI low (sample 1)
                             * CI high (sample 1)
                             * empirical value (sample 2), 
@@ -85,10 +86,23 @@ def compare_models(y_test: Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]
                    two_tailed: bool=True,
                    n_bootstrap: int=10000, seed: int=None, 
                    silent: bool=False) -> Dict[str, Tuple[float]]:
-    """Compares predictions from two models. By default, the function assumes that we are solving a
-    classification problem. The expected dimension of `preds_1` and `preds_1` is `$N_{samples} \times N_{classes}$`. 
-    When `$N_{classes}$` is 1, the function expects the problem to be either binary classification or regression. 
+    """Compares predictions from two models :math:`f_1(x)` and :math:`f_1(x)` that yield prediction vectors  :math:`\hat y_{1}` and :math:`\hat y_{2}` 
+    with a one-tailed bootstrap hypothesis test. I.e., we state the following null and alternative hypotheses:
+
+    .. math::
+        H_0: M(y_{gt}, \hat y_{1}) = M(y_{gt}, \hat y_{2})
+
+        H_1: M(y_{gt}, \hat y_{1}) < M(y_{gt}, \hat y_{2}),
+
+    where :math:`M` is a metric, :math:`y_{gt}` is the vector of ground truth labels, 
+    and :math:`\hat y_{i}, i=1,2` are the vectors of predictions for model 1 and 2, respectively. 
+    Such kind of testing is performed for every specified metric.
     
+    Note that while the test does return you the :math:`p`-value, one should be careful about its interpretation: the :math:`p`-value 
+    is the probablity of observing the test stastic *at least as extreme* as as the one obtained assuming that :math:`H_0` is true. 
+    That is: what is the probablity of one model being better than the other, given that when we evaluate them on larger data they would actually be the same.
+
+    Beyond the hypothesis testing, the function also returns cofindece intervals per metric, i.e. :math:`[M(y_{gt}, \hat y)_{(\\alpha / 2)}, M(y_{gt}, \hat y)_{(1 - \\alpha / 2)}]`.
 
     Args:
         y_test (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Ground truth
@@ -96,7 +110,6 @@ def compare_models(y_test: Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]
         preds_2 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Prediction from model 2
         metrics (Tuple[Union[str, Metric]]): A set of metrics to call. Here, the user either specifies the metrcis available from the stambo library (``stambo.metrics``), or adds an instance of the custom-defined metrics.
         alpha (float, optional): A signficance level for confidence intervals (from 0 to 1).
-        two_tailed (bool, optional): Whether to conduct a two-tailed test. Usually the tests we care about are single-tailed, i.e. the `H_0: model 2 = model 2` vs `H_1: model 2 > model 1`
         n_bootstrap (int, optional): The number of bootstrap iterations. Defaults to 10000.
         seed (int, optional): Random seed. Defaults to None.
         silent (bool, optional): Whether to execute the function silently, i.e. not showing the progress bar. Defaults to False.
@@ -105,13 +118,13 @@ def compare_models(y_test: Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]
         Dict[Tuple[float]]: A dictionary containing a tuple with the empirical value of the metric, and the p-value. 
                             The expected format in the output in every dict entry is:
 
-                            * p-value
-                            * empirical value (model 1)
-                            * CI low (model 1)
-                            * CI high (model 1)
-                            * empirical value (model 2)
-                            * CI low (model 2)
-                            * CI high (model 2)
+                            * :math:`p`-value
+                            * :math:`M(y_{gt}, \hat y_{1})`
+                            * :math:`M(y_{gt}, \hat y_{1})_{(\\alpha / 2)}`
+                            * :math:`M(y_{gt}, \hat y_{1})_{(1 - \\alpha / 2)}`
+                            * :math:`M(y_{gt}, \hat y_{1})`
+                            * :math:`M(y_{gt}, \hat y_{2})_{(\\alpha / 2)}`
+                            * :math:`M(y_{gt}, \hat y_{2})_{(1 - \\alpha / 2)}`
     """
 
     # Data samples need to be prepared

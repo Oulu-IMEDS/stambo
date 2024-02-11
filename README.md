@@ -2,14 +2,35 @@
 
 This package is aimed to be a one-stop-shop for statistical testing in machine learning when it comes to evaluating models on a test set. Currently, we do not support multi-label classification, and computing a significane of ranking multiple methods. Below you can find examples on how to do model comparison in classification, regresson, and semantic segmentation.
 
-## Classification
+## In practice
+The use of the library is straightforward:
+```
+import stambo
+...
+seed = 42
+testing_result = stambo.compare_models(y_test, preds_1, preds_2, metrics=("ROCAUC", "AP", "QKappa", "BACC", "MCC"), seed=seed)
+```
 
-TBD.
-## Regression
+Fore more advanced documentation see the documentation. By default, binary, multi-class and multi-label classification, as well as regression are supported.
 
-TBD.
+One can also use the library to perform a simple two-sample test. For example, to compare the means of two distributions:
+```
+import stambo
+...
+seed = 42
+res = stambo.two_sample_test(sample_1, sample_2, statistics={"Mean": lambda x: x.mean()})
+```
 
-## Semantic segmentation
 
-TBD.
+## Contributing
+
+```
+conda env create -f env.yaml
+conda activate stambo-dev
+pip install -e .
+cd docs
+make html
+```
+
+
 
