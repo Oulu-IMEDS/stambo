@@ -1,12 +1,14 @@
-name: Docs
+name: documentation
 
 on: [push]
+permissions:
+  contents: write
 
 jobs:
   build-linux:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 5
+      max-parallel: 1
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.9
@@ -23,10 +25,13 @@ jobs:
     - name: Build docs
       run: |
         cd docs && make html
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       with:
-        path: './docs/build/html'
-    - name: Deploy to github pages
-      id: deployment
-      uses: actions/deploy-pages@v1
+        publish_branch: gh-pages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: _build/
+        force_orphan: true
+
+
