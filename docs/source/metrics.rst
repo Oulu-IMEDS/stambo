@@ -1,6 +1,6 @@
-Main functionality
+Metrics
 =====================
-.. automodule:: stambo
+.. automodule:: stambo.metrics
     :members:
     :show-inheritance:
    

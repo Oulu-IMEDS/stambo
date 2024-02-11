@@ -17,18 +17,18 @@ description = """A python package for statistical comparison of machine learning
 
 setup(
     author="Aleksei Tiulpin",
-    author_email="aleksei.tiulpin@oulu.fi",
+    author_email="aleksei@gmail.com",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Science/Research",
         "Intended Audience :: Researchers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Operating System :: MacOS",
         "Operating System :: POSIX :: Linux",
     ],

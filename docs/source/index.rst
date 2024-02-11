@@ -12,9 +12,21 @@ Welcome to stambo's documentation!
 
 
 
-Indices and tables
-==================
+.. toctree::
+   :hidden:
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   self
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Documentation:
+
+   stambo
+   metrics
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Examples:
+
+   Classification_example
+   Two_sample_test

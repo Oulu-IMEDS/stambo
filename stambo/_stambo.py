@@ -1,6 +1,5 @@
 import numpy as np
 from typing import Optional, Dict, Callable, Tuple, Union
-from tqdm import tqdm
 import numpy.typing as npt
 
 from ._utils import pbar
@@ -9,8 +8,8 @@ from .metrics import Metric
 
 from . import metrics as metricslib
 
-def two_sample_test(sample_1: Union[npt.NDArray[np.int_], npt.NDArray[np.float], PredSampleWrapper], 
-                    sample_2: Union[npt.NDArray[np.int_], npt.NDArray[np.float], PredSampleWrapper], 
+def two_sample_test(sample_1: Union[npt.NDArray[np.int64], npt.NDArray[np.float64], PredSampleWrapper], 
+                    sample_2: Union[npt.NDArray[np.int64], npt.NDArray[np.float64], PredSampleWrapper], 
                     statistics: Dict[str, Callable]=None, 
                     alpha: float=0.05, 
                     two_tailed: bool = True,
@@ -20,8 +19,8 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int_], npt.NDArray[np.float],
     Note that the statistics are computed independently, and should thus be treated independently.
 
     Args:
-        sample_1 (np.ndarray): _description_
-        sample_2 (np.ndarray): _description_
+        sample_1 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]): Sample 1 to be comapred
+        sample_2 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]): Sample 2 to be comapred
         statistics (Dict[str, Callable]): Statistics to compare the samples by.
         alpha (float, optional): A signficance level for confidence intervals (from 0 to 1).
         n_bootstrap (int, optional): The number of bootstrap iterations. Defaults to 10000.
@@ -30,9 +29,14 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int_], npt.NDArray[np.float],
 
     Returns:
         Dict[Tuple[float]]: A dictionary containing a tuple with the empirical value of the metric, and the p-value. 
-                            The expected format in the output in every dict entry is: p-value, empirical value (sample 1), 
-                            CI low (sample 1), CI high (sample 1), empirical value (sample 2), 
-                            CI low (sample 2), CI high (sample 2).
+                            The expected format in the output in every dict entry is: 
+                            
+                            * p-value, empirical value (sample 1), 
+                            * CI low (sample 1)
+                            * CI high (sample 1)
+                            * empirical value (sample 2), 
+                            * CI low (sample 2)
+                            * CI high (sample 2).
 
     """
     
@@ -73,7 +77,9 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int_], npt.NDArray[np.float],
     return result_final
 
 
-def compare_models(y_test: np.ndarray, preds_1: np.ndarray, preds_2: np.ndarray, 
+def compare_models(y_test: Union[npt.NDArray[np.int64], npt.NDArray[np.float64]], 
+                   preds_1: Union[npt.NDArray[np.int64], npt.NDArray[np.float64]], 
+                   preds_2: Union[npt.NDArray[np.int64], npt.NDArray[np.float64]], 
                    metrics: Tuple[Union[str, Metric]],
                    alpha: Optional[float]=0.05,
                    two_tailed: bool=True,
@@ -85,10 +91,10 @@ def compare_models(y_test: np.ndarray, preds_1: np.ndarray, preds_2: np.ndarray,
     
 
     Args:
-        y_test (np.ndarray): Ground truth
-        preds_1 (np.ndarray): Prediction from model 1
-        preds_2 (np.ndarray): Prediction from model 2
-        metrics (Tuple[Union[str, Metric]]): A set of metrics to call. Here, the user either specifies the metrcis available from the stambo library, or adds an instance of the custom-defined metrics.
+        y_test (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Ground truth
+        preds_1 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Prediction from model 1
+        preds_2 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Prediction from model 2
+        metrics (Tuple[Union[str, Metric]]): A set of metrics to call. Here, the user either specifies the metrcis available from the stambo library (``stambo.metrics``), or adds an instance of the custom-defined metrics.
         alpha (float, optional): A signficance level for confidence intervals (from 0 to 1).
         two_tailed (bool, optional): Whether to conduct a two-tailed test. Usually the tests we care about are single-tailed, i.e. the `H_0: model 2 = model 2` vs `H_1: model 2 > model 1`
         n_bootstrap (int, optional): The number of bootstrap iterations. Defaults to 10000.
@@ -97,7 +103,8 @@ def compare_models(y_test: np.ndarray, preds_1: np.ndarray, preds_2: np.ndarray,
 
     Returns:
         Dict[Tuple[float]]: A dictionary containing a tuple with the empirical value of the metric, and the p-value. 
-                            The expected format in the output in every dict entry is: 
+                            The expected format in the output in every dict entry is:
+
                             * p-value
                             * empirical value (model 1)
                             * CI low (model 1)
