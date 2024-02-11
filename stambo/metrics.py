@@ -7,21 +7,33 @@ from functools import partial
 
 from ._predsamplewrapper import PredSampleWrapper
 
-__all__ = ["ROCAUC", "AP", "F1Score", "QKappa", "BACC", "MCC", "MSE", "MAE"]
+__all__ = ["Metric", "ROCAUC", "AP", "F1Score", "QKappa", "BACC", "MCC", "MSE", "MAE"]
 
 # Base metric class
 class Metric:
+    """A wrapper for metrics that take predictions and ground truth labels as two arguments.
+    """
     def __init__(self, metric: Callable, int_input: bool=False) -> None:
-        """A wrapper for metrics that take predictions and ground truth labels as two arguments.
+        """Constructor of the metric wrapper class
 
         Args:
-            metric (Callable): The metric of choice. The typical ones are ROC-AUC, Average precision etc. See more in the [sklearn documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics).
+            metric (Callable): The metric of choice. The typical ones are ROC-AUC, Average precision etc. 
+            See more in the https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics.
             int_input (bool, optional): Defines whether the metric takes predictions as integers. Defaults to False.
         """
         self.metric = metric
         self.int_input = int_input
 
     def __call__(self, sample: PredSampleWrapper) -> float:
+        """The call method. This runs the metric on the supplied data. If the metric is meanto to be run on integer input.
+        it wil use the argmaxed predictions that are stored by the `PredSampleWrapper` object.
+
+        Args:
+            sample (PredSampleWrapper): Data on which the metric is computed. 
+
+        Returns:
+            float: Metric value. 
+        """
         if self.int_input: # Handling the case when the metric expects an integer input, i.e. cohen's cappa
             return self.metric(sample.gt, sample.predictions_am)
         return self.metric(sample.gt, sample.predictions)
