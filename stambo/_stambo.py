@@ -22,7 +22,7 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int64], npt.NDArray[np.float6
         sample_1 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]): Sample 1 to be comapred
         sample_2 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]): Sample 2 to be comapred
         statistics (Dict[str, Callable]): Statistics to compare the samples by.
-        alpha (float, optional): A signficance level for confidence intervals (from 0 to 1).
+        alpha (float, optional): A significance level for confidence intervals (from 0 to 1).
         n_bootstrap (int, optional): The number of bootstrap iterations. Defaults to 10000.
         seed (int, optional): _description_. Random seed. Defaults to None.
         silent (bool, optional): Whether to execute the function silently, i.e. not showing the progress bar. Defaults to False.
@@ -46,7 +46,7 @@ def two_sample_test(sample_1: Union[npt.NDArray[np.int64], npt.NDArray[np.float6
 
     alpha = 100 * alpha
 
-    # Dict to to store the null bootstrap distribution
+    # Dict to store the null bootstrap distribution
     result = {s_tag: np.zeros((n_bootstrap, 2)) for s_tag in statistics}
 
     for bootstrap_iter in pbar(range(n_bootstrap), total=n_bootstrap, desc="Bootstrapping", silent=silent):
@@ -99,17 +99,17 @@ def compare_models(y_test: Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]
     Such kind of testing is performed for every specified metric.
     
     Note that while the test does return you the :math:`p`-value, one should be careful about its interpretation: the :math:`p`-value 
-    is the probablity of observing the test stastic *at least as extreme* as as the one obtained assuming that :math:`H_0` is true. 
-    That is: what is the probablity of one model being better than the other, given that when we evaluate them on larger data they would actually be the same.
+    is the probability of observing the test statistic *at least as extreme* as the one obtained assuming that:math:`H_0` is true. 
+    That is: what is the probability of one model being better than the other, given that when we evaluate them on larger data they would be the same.
 
-    Beyond the hypothesis testing, the function also returns cofindece intervals per metric, i.e. :math:`[M(y_{gt}, \hat y)_{(\\alpha / 2)}, M(y_{gt}, \hat y)_{(1 - \\alpha / 2)}]`.
+    Beyond the hypothesis testing, the function also returns confidence intervals per metric, i.e. :math:`[M(y_{gt}, \hat y)_{(\\alpha / 2)}, M(y_{gt}, \hat y)_{(1 - \\alpha / 2)}]`.
 
     Args:
         y_test (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Ground truth
         preds_1 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Prediction from model 1
         preds_2 (Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]): Prediction from model 2
-        metrics (Tuple[Union[str, Metric]]): A set of metrics to call. Here, the user either specifies the metrcis available from the stambo library (``stambo.metrics``), or adds an instance of the custom-defined metrics.
-        alpha (float, optional): A signficance level for confidence intervals (from 0 to 1).
+        metrics (Tuple[Union[str, Metric]]): A set of metrics to call. Here, the user either specifies the metrics available from the stambo library (``stambo.metrics``), or adds an instance of the custom-defined metrics.
+        alpha (float, optional): A significance level for confidence intervals (from 0 to 1).
         n_bootstrap (int, optional): The number of bootstrap iterations. Defaults to 10000.
         seed (int, optional): Random seed. Defaults to None.
         silent (bool, optional): Whether to execute the function silently, i.e. not showing the progress bar. Defaults to False.
