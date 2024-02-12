@@ -1,11 +1,9 @@
 # StaMBO: Statistical model comparison with bootstrap 
 [![PyPI version](https://badge.fury.io/py/stambo.svg?branch=master)](https://badge.fury.io/py/stambo)
-![docs](https://github.com/oulu-imeds/stambo/workflows/documentation/badge.svg)
+[![docs](https://github.com/oulu-imeds/stambo/workflows/documentation/badge.svg)](https://oulu-imeds.github.io/stambo/)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
 ------------------------
 This package is aimed to be a one-stop-shop for statistical testing in machine learning when it comes to evaluating models on a test set. Currently, we do not support multi-label classification, and computing the significance of ranking multiple methods. Below you can find examples of how to do model comparison in classification, regresson, and semantic segmentation.
-
-The documentation is available [here](https://oulu-imeds.github.io/stambo/).
 
 ## In practice
 Install from PyPI:
