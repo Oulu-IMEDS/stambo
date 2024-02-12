@@ -3,7 +3,9 @@
 ![docs](https://github.com/oulu-imeds/stambo/workflows/documentation/badge.svg)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
 ------------------------
-This package is aimed to be a one-stop-shop for statistical testing in machine learning when it comes to evaluating models on a test set. Currently, we do not support multi-label classification, and computing a significance of ranking multiple methods. Below you can find examples on how to do model comparison in classification, regresson, and semantic segmentation.
+This package is aimed to be a one-stop-shop for statistical testing in machine learning when it comes to evaluating models on a test set. Currently, we do not support multi-label classification, and computing the significance of ranking multiple methods. Below you can find examples of how to do model comparison in classification, regresson, and semantic segmentation.
+
+The documentation is available [here](https://oulu-imeds.github.io/stambo/).
 
 ## In practice
 Install from PyPI:
