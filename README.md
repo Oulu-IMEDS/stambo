@@ -1,5 +1,5 @@
 # StaMBO: Statistical model comparison with bootstrap 
-[![PyPI version](https://badge.fury.io/py/stambo.svg)](https://badge.fury.io/py/stambo)
+[![PyPI version](https://badge.fury.io/py/stambo.svg?branch=master)](https://badge.fury.io/py/stambo)
 ![docs](https://github.com/oulu-imeds/stambo/workflows/documentation/badge.svg)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
 ------------------------
