@@ -20,7 +20,7 @@ testing_result = stambo.compare_models(y_test, preds_1, preds_2, metrics=("ROCAU
 print(stambo.to_latex(testing_result))
 ```
 
-The above will print a LaTeX table, which one can easily copy-paste. As an example, below is the rendered table, which was returned in `notebooks/Classification_example`:
+The above will print a LaTeX table, which one can easily copy-paste. As an example, below is the rendered table, which was returned in `notebooks/Classification_example.ipynb`:
 ![Table](docs/source/_static/example_table.png)
 
 For more advanced documentation see the documentation. By default, binary, multi-class, and multi-label classification, as well as regression are supported.
