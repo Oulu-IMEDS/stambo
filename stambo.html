@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Main functionality &mdash; stambo v0.1.1 documentation</title>
+  <title>Main functionality &mdash; stambo v0.1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/msmb.css?v=51bd699f" />
 
@@ -13,7 +13,7 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/documentation_options.js?v=5e3f2911"></script>
+        <script src="_static/documentation_options.js?v=69c7a37b"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -107,17 +107,17 @@ with a one-tailed bootstrap hypothesis test. I.e., we state the following null a
 and <span class="math notranslate nohighlight">\(\hat y_{i}, i=1,2\)</span> are the vectors of predictions for model 1 and 2, respectively.
 Such kind of testing is performed for every specified metric.</p>
 <p>Note that while the test does return you the <span class="math notranslate nohighlight">\(p\)</span>-value, one should be careful about its interpretation: the <span class="math notranslate nohighlight">\(p\)</span>-value
-is the probablity of observing the test stastic <em>at least as extreme</em> as as the one obtained assuming that <span class="math notranslate nohighlight">\(H_0\)</span> is true.
-That is: what is the probablity of one model being better than the other, given that when we evaluate them on larger data they would actually be the same.</p>
-<p>Beyond the hypothesis testing, the function also returns cofindece intervals per metric, i.e. <span class="math notranslate nohighlight">\([M(y_{gt}, \hat y)_{(\alpha / 2)}, M(y_{gt}, \hat y)_{(1 - \alpha / 2)}]\)</span>.</p>
+is the probability of observing the test statistic <em>at least as extreme</em> as the one obtained assuming that:math:<cite>H_0</cite> is true.
+That is: what is the probability of one model being better than the other, given that when we evaluate them on larger data they would be the same.</p>
+<p>Beyond the hypothesis testing, the function also returns confidence intervals per metric, i.e. <span class="math notranslate nohighlight">\([M(y_{gt}, \hat y)_{(\alpha / 2)}, M(y_{gt}, \hat y)_{(1 - \alpha / 2)}]\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y_test</strong> (<em>Union</em><em>[</em><em>npt.NDArray</em><em>[</em><em>np.int64</em><em>]</em><em>, </em><em>npt.NDArray</em><em>[</em><em>np.float64</em><em>]</em><em>]</em>) – Ground truth</p></li>
 <li><p><strong>preds_1</strong> (<em>Union</em><em>[</em><em>npt.NDArray</em><em>[</em><em>np.int64</em><em>]</em><em>, </em><em>npt.NDArray</em><em>[</em><em>np.float64</em><em>]</em><em>]</em>) – Prediction from model 1</p></li>
 <li><p><strong>preds_2</strong> (<em>Union</em><em>[</em><em>npt.NDArray</em><em>[</em><em>np.int64</em><em>]</em><em>, </em><em>npt.NDArray</em><em>[</em><em>np.float64</em><em>]</em><em>]</em>) – Prediction from model 2</p></li>
-<li><p><strong>metrics</strong> (<em>Tuple</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="metrics.html#stambo.metrics.Metric" title="stambo.metrics.Metric"><em>Metric</em></a><em>]</em><em>]</em>) – A set of metrics to call. Here, the user either specifies the metrcis available from the stambo library (<code class="docutils literal notranslate"><span class="pre">stambo.metrics</span></code>), or adds an instance of the custom-defined metrics.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – A signficance level for confidence intervals (from 0 to 1).</p></li>
+<li><p><strong>metrics</strong> (<em>Tuple</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="metrics.html#stambo.metrics.Metric" title="stambo.metrics.Metric"><em>Metric</em></a><em>]</em><em>]</em>) – A set of metrics to call. Here, the user either specifies the metrics available from the stambo library (<code class="docutils literal notranslate"><span class="pre">stambo.metrics</span></code>), or adds an instance of the custom-defined metrics.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – A significance level for confidence intervals (from 0 to 1).</p></li>
 <li><p><strong>n_bootstrap</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of bootstrap iterations. Defaults to 10000.</p></li>
 <li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Random seed. Defaults to None.</p></li>
 <li><p><strong>silent</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to execute the function silently, i.e. not showing the progress bar. Defaults to False.</p></li>
@@ -177,7 +177,7 @@ Note that the statistics are computed independently, and should thus be treated 
 <li><p><strong>sample_1</strong> (<em>Union</em><em>[</em><em>npt.NDArray</em><em>[</em><em>np.int64</em><em>]</em><em>, </em><em>npt.NDArray</em><em>[</em><em>np.float64</em><em>]</em>) – Sample 1 to be comapred</p></li>
 <li><p><strong>sample_2</strong> (<em>Union</em><em>[</em><em>npt.NDArray</em><em>[</em><em>np.int64</em><em>]</em><em>, </em><em>npt.NDArray</em><em>[</em><em>np.float64</em><em>]</em>) – Sample 2 to be comapred</p></li>
 <li><p><strong>statistics</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Callable</em><em>]</em>) – Statistics to compare the samples by.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – A signficance level for confidence intervals (from 0 to 1).</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – A significance level for confidence intervals (from 0 to 1).</p></li>
 <li><p><strong>n_bootstrap</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of bootstrap iterations. Defaults to 10000.</p></li>
 <li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – _description_. Random seed. Defaults to None.</p></li>
 <li><p><strong>silent</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to execute the function silently, i.e. not showing the progress bar. Defaults to False.</p></li>
@@ -236,7 +236,7 @@ Note that the statistics are computed independently, and should thus be treated 
      aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"></span>
-        v0.1.1
+        v0.1.2
       <span class="fa fa-caret-down"></span>
     </span>
 

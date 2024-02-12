@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Comparing two classification models using stambo &mdash; stambo v0.1.1 documentation</title>
+  <title>Comparing two classification models using stambo &mdash; stambo v0.1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/msmb.css?v=51bd699f" />
       <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css" />
@@ -14,7 +14,7 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/documentation_options.js?v=5e3f2911"></script>
+        <script src="_static/documentation_options.js?v=69c7a37b"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -97,6 +97,7 @@
              
   <section id="Comparing-two-classification-models-using-stambo">
 <h1>Comparing two classification models using <code class="docutils literal notranslate"><span class="pre">stambo</span></code><a class="headerlink" href="#Comparing-two-classification-models-using-stambo" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/v0.1.2?labpath=notebooks%2FClassification_example.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
 <p>V1: © Aleksei Tiulpin, PhD, 2024</p>
 <p>This example shows an end-to-end example on how one can take a dataset, train two machine learning models, and conduct a statistical test to assess whether the twp models are different. We will first use a set of classifcal metrics (basically the metrics from sklearn). At the end of the tutorial, we will show how one can generate a LaTeX report, and implement a custom metric.</p>
 <section id="Import-of-necessary-libraries">
@@ -171,6 +172,7 @@ kNN AUC: 0.9722 / LR AUC: 0.9918
 <section id="Statistical-testing">
 <h2>Statistical testing<a class="headerlink" href="#Statistical-testing" title="Link to this heading">¶</a></h2>
 <p>As stated in the documentation, the testing routine returns the <code class="docutils literal notranslate"><span class="pre">dict</span></code> of <code class="docutils literal notranslate"><span class="pre">tuple</span></code>. The keys in the dict are the metric tags, and the values are tuples that store the data in the following format: * p-value (<span class="math notranslate nohighlight">\(H_0: model_1 = model_2\)</span>) * Empirical value (model 1) * CI low (model 1) * CI high (model 1) * Empirical value (model 2) * CI low (model 2) * CI high (model 2)</p>
+<p>If you launch the code in Binder, decrease the number of bootstrap iterations (<code class="docutils literal notranslate"><span class="pre">10000</span></code> by default).</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -431,7 +433,7 @@ $p$-value &amp; $0.02$ &amp; $0.02$ &amp; $0.18$ \\
      aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"></span>
-        v0.1.1
+        v0.1.2
       <span class="fa fa-caret-down"></span>
     </span>
 
