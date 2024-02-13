@@ -23,12 +23,15 @@ testing_result = stambo.compare_models(y_test, preds_1, preds_2, metrics=("ROCAU
 print(stambo.to_latex(testing_result))
 ```
 
-The above will print a LaTeX table, which one can easily copy-paste. As an example, below is the rendered table, which was returned in `notebooks/Classification_example.ipynb` ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/v0.1.2?labpath=notebooks%2FClassification_example.ipynb)):
+The above will print a LaTeX table, which one can easily copy-paste. As an example, below is the rendered table, which was returned in [`notebooks/Classification_example.ipynb`](https://github.com/Oulu-IMEDS/stambo/blob/main/notebooks/Classification_example.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FClassification_example.ipynb)):
 ![Table](docs/source/_static/example_table.png)
 
-For more advanced documentation see the documentation. By default, binary, multi-class, and multi-label classification, as well as regression are supported.
+The regression example can be found at [`notebooks/Regression_example.ipynb`](https://github.com/Oulu-IMEDS/stambo/blob/main/notebooks/Regression_example.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FRegression.ipynb)
+)
 
-One can also use the library to perform a simple two-sample test. For example, to compare the means of two distributions ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/v0.1.2?labpath=notebooks%2FTwo_sample_test.ipynb)):
+For more advanced explanation, see the [documentation](https://oulu-imeds.github.io/stambo/). By default, binary, multi-class, and multi-label classification, as well as regression are supported.
+
+One can also use the library to perform a simple two-sample test. For example, to compare the means of two distributions:
 ```
 import stambo
 ...
@@ -36,6 +39,7 @@ seed = 42
 res = stambo.two_sample_test(sample_1, sample_2, statistics={"Mean": lambda x: x.mean()})
 ```
 
+A more detailed and full example of the above is shown here: [`notebooks/Two_sample_test.ipynb`](notebooks/Two_sample_test.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FTwo_sample_test.ipynb))
 
 ## Contributing
 
