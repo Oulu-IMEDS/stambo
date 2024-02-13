@@ -23,10 +23,10 @@ testing_result = stambo.compare_models(y_test, preds_1, preds_2, metrics=("ROCAU
 print(stambo.to_latex(testing_result))
 ```
 
-The above will print a LaTeX table, which one can easily copy-paste. As an example, below is the rendered table, which was returned in [`notebooks/Classification_example.ipynb`](https://github.com/Oulu-IMEDS/stambo/blob/main/notebooks/Classification_example.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FClassification_example.ipynb)):
+The above will print a LaTeX table, which one can easily copy-paste. As an example, below is the rendered table, which was returned in [`notebooks/Classification.ipynb`](https://github.com/Oulu-IMEDS/stambo/blob/main/notebooks/Classification.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FClassification.ipynb)):
 ![Table](docs/source/_static/example_table.png)
 
-The regression example can be found at [`notebooks/Regression_example.ipynb`](https://github.com/Oulu-IMEDS/stambo/blob/main/notebooks/Regression_example.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FRegression.ipynb)
+The regression example can be found at [`notebooks/Regression.ipynb`](https://github.com/Oulu-IMEDS/stambo/blob/main/notebooks/Regression.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FRegression.ipynb)
 )
 
 For more advanced explanation, see the [documentation](https://oulu-imeds.github.io/stambo/). By default, binary, multi-class, and multi-label classification, as well as regression are supported.
