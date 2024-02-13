@@ -28,5 +28,6 @@ Welcome to stambo's documentation!
    :maxdepth: 1
    :caption: Examples:
 
-   Classification_example
+   Classification
    Two_sample_test
+   Regression

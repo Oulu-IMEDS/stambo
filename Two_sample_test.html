@@ -14,6 +14,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=69c7a37b"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
@@ -24,7 +26,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Comparing two classification models using stambo" href="Classification_example.html" /> 
+    <link rel="next" title="Comparing two regression models using stambo" href="Regression.html" />
+    <link rel="prev" title="Comparing two classification models using stambo" href="Classification.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,7 +62,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Classification_example.html">Comparing two classification models using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classification.html">Comparing two classification models using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Comparing two samples using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Importing-the-libraries">Importing the libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Data-generation">Data generation</a></li>
@@ -67,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#LaTeX-report">LaTeX report</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Regression.html">Comparing two regression models using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a></li>
 </ul>
 
         </div>
@@ -94,13 +98,13 @@
            <div itemprop="articleBody">
              
   <section id="Comparing-two-samples-using-stambo">
-<h1>Comparing two samples using <code class="docutils literal notranslate"><span class="pre">stambo</span></code><a class="headerlink" href="#Comparing-two-samples-using-stambo" title="Link to this heading">¶</a></h1>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/v0.1.2?labpath=notebooks%2FTwo_sample_test.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
-<p>V1: © Aleksei Tiulpin, PhD, 2024</p>
+<h1>Comparing two samples using <code class="docutils literal notranslate"><span class="pre">stambo</span></code><a class="headerlink" href="#Comparing-two-samples-using-stambo" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/Oulu-IMEDS/stambo/main?labpath=notebooks%2FTwo_sample_test.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<p>V1.1: © Aleksei Tiulpin, PhD, 2024</p>
 <p>There are many cases, when we develop models other than classification or regression, and we want to compute scores per datapoint, and then find their mean. We may often want to compare just two samples of measurements, and <code class="docutils literal notranslate"><span class="pre">stambo</span></code> allows to do this easily too.</p>
 <p>This example shows how to conduct a simple two-sample test. The example is synthetic, and we will just simply generate two Gaussian samples, and assess whether the mean of the second sample is greater than the mean of the first sample.</p>
 <section id="Importing-the-libraries">
-<h2>Importing the libraries<a class="headerlink" href="#Importing-the-libraries" title="Link to this heading">¶</a></h2>
+<h2>Importing the libraries<a class="headerlink" href="#Importing-the-libraries" title="Link to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -114,7 +118,7 @@
 </div>
 </section>
 <section id="Data-generation">
-<h2>Data generation<a class="headerlink" href="#Data-generation" title="Link to this heading">¶</a></h2>
+<h2>Data generation<a class="headerlink" href="#Data-generation" title="Link to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -128,7 +132,7 @@
 </div>
 </section>
 <section id="Sample-comparison">
-<h2>Sample comparison<a class="headerlink" href="#Sample-comparison" title="Link to this heading">¶</a></h2>
+<h2>Sample comparison<a class="headerlink" href="#Sample-comparison" title="Link to this heading"></a></h2>
 <p>Note that when it comes to a two-sample test, <code class="docutils literal notranslate"><span class="pre">stambo</span></code> does not require the statistic of choice to be a machine learning metric that is a subclass of <code class="docutils literal notranslate"><span class="pre">stambo.metrics.Metric</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -148,7 +152,7 @@ Bootstrapping: 100%|████████████████████
 </div>
 </section>
 <section id="LaTeX-report">
-<h2>LaTeX report<a class="headerlink" href="#LaTeX-report" title="Link to this heading">¶</a></h2>
+<h2>LaTeX report<a class="headerlink" href="#LaTeX-report" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -182,7 +186,8 @@ $p$-value &amp; $0.02$ \\
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Classification_example.html" class="btn btn-neutral float-left" title="Comparing two classification models using stambo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Classification.html" class="btn btn-neutral float-left" title="Comparing two classification models using stambo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Regression.html" class="btn btn-neutral float-right" title="Comparing two regression models using stambo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

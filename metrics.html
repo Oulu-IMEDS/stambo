@@ -13,6 +13,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=69c7a37b"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
@@ -21,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Comparing two classification models using stambo" href="Classification_example.html" />
+    <link rel="next" title="Comparing two classification models using stambo" href="Classification.html" />
     <link rel="prev" title="Main functionality" href="stambo.html" /> 
 </head>
 
@@ -68,8 +70,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Classification_example.html">Comparing two classification models using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classification.html">Comparing two classification models using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Two_sample_test.html">Comparing two samples using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regression.html">Comparing two regression models using <code class="docutils literal notranslate"><span class="pre">stambo</span></code></a></li>
 </ul>
 
         </div>
@@ -97,66 +100,66 @@
            <div itemprop="articleBody">
              
   <section id="module-stambo.metrics">
-<span id="metrics"></span><h1>Metrics<a class="headerlink" href="#module-stambo.metrics" title="Link to this heading">¶</a></h1>
+<span id="metrics"></span><h1>Metrics<a class="headerlink" href="#module-stambo.metrics" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.AP">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">AP</span></span><a class="reference internal" href="_modules/stambo/metrics.html#AP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.AP" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">AP</span></span><a class="reference internal" href="_modules/stambo/metrics.html#AP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.AP" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>The Average Precision metric. Defined for Binary classifiers.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.BACC">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">BACC</span></span><a class="reference internal" href="_modules/stambo/metrics.html#BACC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.BACC" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">BACC</span></span><a class="reference internal" href="_modules/stambo/metrics.html#BACC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.BACC" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>The balanced accuracy score.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.F1Score">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">F1Score</span></span><a class="reference internal" href="_modules/stambo/metrics.html#F1Score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.F1Score" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">F1Score</span></span><a class="reference internal" href="_modules/stambo/metrics.html#F1Score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.F1Score" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>The F1 score metric. Defined for Binary classifiers.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.MAE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">MAE</span></span><a class="reference internal" href="_modules/stambo/metrics.html#MAE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.MAE" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">MAE</span></span><a class="reference internal" href="_modules/stambo/metrics.html#MAE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.MAE" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>The mean absolute error.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.MCC">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">MCC</span></span><a class="reference internal" href="_modules/stambo/metrics.html#MCC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.MCC" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">MCC</span></span><a class="reference internal" href="_modules/stambo/metrics.html#MCC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.MCC" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>The Matthew’s correlation coefficient</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.MSE">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">MSE</span></span><a class="reference internal" href="_modules/stambo/metrics.html#MSE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.MSE" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">MSE</span></span><a class="reference internal" href="_modules/stambo/metrics.html#MSE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.MSE" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>The Mean squared error</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.Metric">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">Metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stambo/metrics.html#Metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.Metric" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">Metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stambo/metrics.html#Metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.Metric" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A wrapper for metrics that take predictions and ground truth labels as two arguments.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.QKappa">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">QKappa</span></span><a class="reference internal" href="_modules/stambo/metrics.html#QKappa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.QKappa" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">QKappa</span></span><a class="reference internal" href="_modules/stambo/metrics.html#QKappa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.QKappa" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>Cohen’s kappa score (quadratic).</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stambo.metrics.ROCAUC">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">ROCAUC</span></span><a class="reference internal" href="_modules/stambo/metrics.html#ROCAUC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.ROCAUC" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stambo.metrics.</span></span><span class="sig-name descname"><span class="pre">ROCAUC</span></span><a class="reference internal" href="_modules/stambo/metrics.html#ROCAUC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stambo.metrics.ROCAUC" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#stambo.metrics.Metric" title="stambo.metrics.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a></p>
 <p>The ROC-AUC metric. Defined for Binary classifiers.</p>
 </dd></dl>
@@ -168,7 +171,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="stambo.html" class="btn btn-neutral float-left" title="Main functionality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Classification_example.html" class="btn btn-neutral float-right" title="Comparing two classification models using stambo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Classification.html" class="btn btn-neutral float-right" title="Comparing two classification models using stambo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
