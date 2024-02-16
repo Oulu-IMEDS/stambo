@@ -1,4 +1,5 @@
 # StaMBO: Statistical model comparison with bootstrap 
+[![DOI](https://zenodo.org/badge/747404839.svg)](https://zenodo.org/doi/10.5281/zenodo.10669416)
 [![PyPI version](https://badge.fury.io/py/stambo.svg?branch=master)](https://badge.fury.io/py/stambo)
 [![docs](https://github.com/oulu-imeds/stambo/workflows/documentation/badge.svg)](https://oulu-imeds.github.io/stambo/)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
