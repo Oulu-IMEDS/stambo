@@ -54,4 +54,4 @@ make html
 ```
 
 ## Author
-Aleksei Tiulpin
+Dr. Aleksei Tiulpin, PhD
